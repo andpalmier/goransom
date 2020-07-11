@@ -19,6 +19,17 @@ This will create an executable called `goransom`. You can then run the executabl
 - `-secret`, to specify the secret which is used to derive the key for the encryption/decryption.
 - `-decrypt`, to be specified if we want to decrypt a file or a folder.
 
+If you are building it for Windows on Linux, use:
+
+```
+$ GOOS=windows GOARCH=386 go build -o goransom.exe goransom.go
+```
+
+But be careful, Windows defender does not like goransom:
+
+![](windows_def.png)
+
+
 ### Example
 
 ```
