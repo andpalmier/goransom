@@ -1,7 +1,5 @@
 # goransom
 
----
-
 <p align="center">
   <img alt="goransom" src="https://github.com/andpalmier/goransom/blob/master/thief_gopher.jpg?raw=true" />
   <p align="center">
