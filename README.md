@@ -1,6 +1,16 @@
 # goransom
 
-![](thief_gopher.jpg)
+---
+
+<p align="center">
+  <img alt="goransom" src="https://github.com/andpalmier/goransom/blob/master/thief_gopher.jpg?raw=true" />
+  <p align="center">
+    <a href="https://github.com/andpalmier/goransom/blob/master/LICENSE"><img alt="Software License" src="https://img.shields.io/badge/license-GPL3-brightgreen.svg?style=flat-square"></a>
+    <a href="https://goreportcard.com/report/github.com/andpalmier/goransom"><img alt="Go Report Card" src="https://goreportcard.com/badge/github.com/andpalmier/goransom?style=flat-square"></a>
+    <a href="https://twitter.com/intent/follow?screen_name=andpalmier"><img src="https://img.shields.io/twitter/follow/andpalmier?style=social&logo=twitter" alt="follow on Twitter"></a>
+  </p>
+</p>
+
 
 This is a proof of concept for a simple ransomware written in Go. The purpose of this project is purely educative: I wrote `goransom` to get familiar with the language, this also means that the code is poorly written and organized.
 

@@ -12,13 +12,13 @@ import (
     "strings"
 )
 
-// given a secret returns the sha256 hash
+// DeriveKey takes a secret and returns the sha256 hash
 // used for encryption/decryption
 func DeriveKey(secret string)[32]byte{
     return sha256.Sum256([]byte(secret))
 }
 
-// given a file path and a key, encrypts the file with the key
+// Encrypt takes a file path and a key and encrypts the file with the key
 func Encrypt(filePath string, secretKey []byte) {
 
     // open the given file
@@ -33,6 +33,10 @@ func Encrypt(filePath string, secretKey []byte) {
 	panic(err)
     }
 
+
+    // The IV needs to be unique, but not secure. therefore it's common to
+    // include it at the beginning of the ciphertext.
+    // See here: https://golang.org/pkg/crypto/cipher/
     ciphertext := make([]byte, aes.BlockSize+len(data))
     iv := ciphertext[:aes.BlockSize]
     if _, err := io.ReadFull(rand.Reader, iv); err != nil {
@@ -52,7 +56,7 @@ func Encrypt(filePath string, secretKey []byte) {
     }
 }
 
-
+// Decrypt takes a file path and a key and decrypts the file with the given key
 func Decrypt(filePath string, secretKey []byte) {
 
     // open the given file
@@ -65,6 +69,14 @@ func Decrypt(filePath string, secretKey []byte) {
     block, err := aes.NewCipher(secretKey)
     if err != nil {
 	panic(err)
+    }
+
+
+    // The IV needs to be unique, but not secure. Therefore it's common to
+    // include it at the beginning of the ciphertext.
+    // See here: https://golang.org/pkg/crypto/cipher/
+    if len(ciphertext) < aes.BlockSize {
+	panic("ciphertext too short")
     }
 
     iv := ciphertext[:aes.BlockSize]
