@@ -14,6 +14,8 @@ This is a proof of concept for a simple ransomware written in Go. The purpose of
 
 **DO NOT USE THIS ON SYSTEMS WHERE YOU DON'T HAVE THE PERMISSION OF THE OWNER**
 
+You can find additional details about this project in my blogpost [Proof of concept of a ransowmare in Go](https://andpalmier.github.io/posts/poc-goransom/).
+
 ## Usage
 
 After downloading the repository, navigate into the directory and build the project:
