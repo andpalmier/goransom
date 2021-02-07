@@ -21,10 +21,10 @@ You can find additional details about this project in my blogpost [Proof of conc
 After downloading the repository, navigate into the directory and build the project:
 
 ```
-$ go build goransom.go
+$ make goransom
 ```
 
-This will create an executable called `goransom`. You can then run the executable with the following flags:
+This will create a folder `build`, containing an executable called `goransom`. You can then run the executable with the following flags:
 - `-target`, to specify a folder or a file to encrypt/decrypt. If it's a directory, all the files contained in the given folder will be encrypted/decrypted.
 - `-secret`, to specify the secret which is used to derive the key for the encryption/decryption.
 - `-decrypt`, to be specified if we want to decrypt a file or a folder.

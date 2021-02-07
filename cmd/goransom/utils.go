@@ -1,4 +1,4 @@
-package utils
+package main
 
 import (
 	"crypto/aes"
@@ -12,14 +12,14 @@ import (
 	"strings"
 )
 
-// DeriveKey takes a secret and returns the sha256 hash
+// deriveKey takes a secret and returns the sha256 hash
 // used for encryption/decryption
-func DeriveKey(secret string) [32]byte {
+func deriveKey(secret string) [32]byte {
 	return sha256.Sum256([]byte(secret))
 }
 
-// Encrypt takes a file path and a key and encrypts the file with the key
-func Encrypt(filePath string, secretKey []byte) {
+// encrypt takes a file path and a key and encrypts the file with the key
+func encrypt(filePath string, secretKey []byte) {
 
 	// open the given file
 	data, err := ioutil.ReadFile(filePath)
@@ -56,7 +56,7 @@ func Encrypt(filePath string, secretKey []byte) {
 }
 
 // Decrypt takes a file path and a key and decrypts the file with the given key
-func Decrypt(filePath string, secretKey []byte) {
+func decrypt(filePath string, secretKey []byte) {
 
 	// open the given file
 	ciphertext, err := ioutil.ReadFile(filePath)

